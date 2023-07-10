@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON Data</title>
+</head>
+<body>
+    <h1>JSON Data</h1>
+
+    <pre>
+        {{ json_data | json_script:"json-data" }}
+    </pre>
+
+    <script>
+        var jsonData = JSON.parse(document.getElementById('json-data').textContent);
+        console.log(jsonData);
+    </script>
+</body>
+</html>

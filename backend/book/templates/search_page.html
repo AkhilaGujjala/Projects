@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results</h1>
+    
+    <form action="{% url 'search_page' %}" method="get">
+        <input type="text" name="searchTerm" value="{{ search_term }}" placeholder="Search...">
+        <button type="submit">Search</button>
+    </form>
+
+    {% if search_results %}
+        <h2>Results for "{{ search_term }}"</h2>
+        <ul>
+            {% for book in search_results %}
+                <li>{{ book.title }} by {{book.author}}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No results found for "{{ search_term }}".</p>
+    {% endif %}
+</body>
+</html>
