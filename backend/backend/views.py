@@ -13,7 +13,7 @@ def search_page(request):
         cursor = db.cursor()
 
         # Execute the query
-        query = f"SELECT * FROM books_books WHERE title LIKE '%{search_term}%'"
+        query = f"SELECT * FROM books_books WHERE title LIKE '%{search_term}%' OR author LIKE '%{search_term}%'"
         cursor.execute(query)
 
         # Fetch all the rows
@@ -33,7 +33,7 @@ def search_page(request):
         cursor.close()
         db.close()
 
-        return render(request, 'search_page.html', {'search_results':  search_result},)
+        return render(request, 'search_page.html', {'search_results':  search_result, 'search_term':search_term},)
         #context={{'search_results': search_result}, {'search_term': search_term}}
         #return JsonResponse(context, safe=False)
     return render(request, 'search_page.html')

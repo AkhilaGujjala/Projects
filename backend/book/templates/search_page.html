@@ -15,8 +15,10 @@
         <h2>Results for "{{ search_term }}"</h2>
         <ul>
             {% for book in search_results %}
+            <div key={{book.id}}>
                 <li>{{ book.title }} by {{book.author}}</li>
             {% endfor %}
+            </div>
         </ul>
     {% else %}
         <p>No results found for "{{search_term }}".</p>
